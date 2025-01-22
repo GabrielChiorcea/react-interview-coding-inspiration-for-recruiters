@@ -1,192 +1,70 @@
-import React, { useState, useEffect } from "react";
+// Problem:
+  // Creates a React component that displays a list of users. The list of 
+    // users will be obtained from an API and the users will be displayed with their 
+    // name and age. Additionally, the component will have a button to sort users by age in ascending order.
 
-const TodoApp = () => {
-  const [tasks, setTasks] = useState([]); // List of tasks
-  const [currentId, setCurrentId] = useState(0); // Current id
-  const [nextId, setNextId] = useState(1); // Next task id
-  const [task, setTask] = useState(""); // Current task
+// Requirements:
+  // Creates a UserList component that will get the list of users from an API.
+  // It uses useState and useEffect to manage state and make API requests.
+  // Create a button that sorts users by age in ascending order.
+  // Ensure that errors during API requests are handled correctly.
+  // Each user will be displayed with their name and age.
+  // Make sure you use an efficient sorting method (you don't have to sort the 
+    // list on every render).
 
-  // { id: 1, text: "Example task", completed: false }
 
-  // Function to add a task
-  const addTask = (e) => {
-    e.preventDefault();
-    // TODO: Add the task to the tasks list
-    if (currentId < nextId && task !== "") {
-      setCurrentId(currentId + 1);
-      setTasks([ ...tasks, { id: nextId, text: task, completed: false }]);
-      setTask("");
-    } else {
-      alert("Cannot add a new task, check the id or task text");
-    }
-    setNextId(nextId + 1);
-  };
+//API URL: https://jsonplaceholder.typicode.com/users
 
-  // Function to delete a task
-  const deleteTask = (id) => {
-    // TODO: Delete the task with the given id
-    setTasks(tasks.filter(task => task.id !== id));
-  };
+// {
+//   "id": 1,
+//   "name": "Leanne Graham",
+//   "username": "Bret",
+//   "email": "Sincere@april.biz",
+//   "address": {
+//     "street": "Kulas Light",
+//     "suite": "Apt. 556",
+//     "city": "Gwenborough",
+//     "zipcode": "92998-3874",
+//     "geo": {
+//       "lat": "-37.3159",
+//       "lng": "81.1496"
+//     }
+//   },
+//   "phone": "1-770-736-8031 x56442",
+//   "website": "hildegard.org",
+//   "company": {
+//     "name": "Romaguera-Crona",
+//     "catchPhrase": "Multi-layered client-server neural-net",
+//     "bs": "harness real-time e-markets"
+//   }
+// },
 
-  // Function to toggle completion
-  const toggleComplete = (id) => {
-    // TODO: Mark the task as complete/incomplete
-    setTasks(tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, completed: !task.completed };
-      }
-      return task;
-    }));
-  };
 
-  // Save tasks to localStorage
-  useEffect(() => {
-    // TODO: Save tasks to localStorage when the tasks list changes
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
 
-  // Load tasks from localStorage
-  useEffect(() => {
-    // TODO: Load tasks from localStorage on initialization
-    let tasks = localStorage.getItem("tasks");
-    if (tasks) {
-      setTasks(JSON.parse(tasks));
-    }
-  }, []);
 
-  return (
-    <div className="container">
-      <h1>To-Do List</h1>
-      <form onSubmit={addTask}>
-        <input
-          id="task"
-          type="text"
-          value={task}
-          placeholder="Add a task"
-          onChange={(e) => setTask(e.target.value)}
-        />
-        <button type="submit">Add</button>
-      </form>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id}>
-            <span
-              style={{
-                textDecoration: task.completed ? "line-through" : "none",
-              }}
-              onClick={() => toggleComplete(task.id)}
-            >
-              {task.text}
-            </span>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
-            <button onClick={() => toggleComplete(task.id)}>Complete</button>
-          </li>
-        ))}
-      </ul>
+import React from 'react';
 
-      <style>
-        {`
-          body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-          }
-
-          .container {
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-          }
-
-          h1 {
-            text-align: center;
-            color: #6c63ff;
-            margin-bottom: 20px;
-          }
-
-          form {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-          }
-
-          input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-          }
-
-          button {
-            padding: 10px 15px;
-            background-color: #6c63ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-          }
-
-          button:hover {
-            background-color: #4b42d5;
-          }
-
-          ul {
-            list-style: none;
-            padding: 0;
-          }
-
-          li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-          }
-
-          li span {
-            cursor: pointer;
-          }
-
-          li span:hover {
-            color: #6c63ff;
-          }
-
-          li button {
-            background-color: #ff6b6b;
-            margin-left: 10px;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-radius: 5px;
-          }
-
-          li button:hover {
-            background-color: #d54a4a;
-          }
-
-          li button:last-child {
-            background-color: #6c63ff;
-          }
-
-          li button:last-child:hover {
-            background-color: #4b42d5;
-          }
-        `}
-      </style>
-    </div>
-  );
-};
-
-export default TodoApp;
+    const UserList = () => {
+      // 1. Create a state for users
+      // 2. Create a state for tracking sort order
+    
+      // 3. Use useEffect to load users from an API
+      useEffect(() => {
+        // 4. Make the API request to get users and save them in the state
+      }, []);
+    
+      // 5. Create a function to sort users by age
+      const sortUsers = () => {
+      };
+    
+      return (
+        <div>
+          <h2>User List</h2>
+          {/* 8. Add a button to trigger sorting */}
+          {/* 9. Display the users in a list */}
+        </div>
+      );
+    };
+    
+    export default UserList;
+    
