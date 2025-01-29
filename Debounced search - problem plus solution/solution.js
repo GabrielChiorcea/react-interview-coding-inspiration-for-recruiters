@@ -27,11 +27,14 @@ const SearchComponent = () => {
   const [results, setResults] = useState([]); // Store API results
   const [error, setError] = useState(""); // Store error message
 
-  const HTTP_TIMEOUT = 5000; // Set timeout to 5 seconds
+  const HTTP_TIMEOUT = 10000; 
   const URL = "https://api.github.com/search/users?q=";
 
   useEffect(() => {
-    if (!query) return; // Don't make a request if query is empty
+    // Hint: Set a timeout to delay the API request
+    // Hint: Cancel previous timeout using clearTimeout
+    // Hint: Fetch data from API and update state
+    if (!query) return; 
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), HTTP_TIMEOUT);
@@ -42,10 +45,10 @@ const SearchComponent = () => {
           signal: controller.signal,
         }).then((res) => res.json());
 
-        // Check if the request was aborted
+        
         if (controller.signal.aborted) return;
 
-        setResults(response.items || []); // Set the results (if any)
+        setResults(response.items || []); 
       } catch (error) {
         if (error.name === "AbortError") {
           console.log("Request was aborted");
@@ -53,7 +56,7 @@ const SearchComponent = () => {
           setError("An error occurred");
         }
       } finally {
-        clearTimeout(timeout); // Clear timeout
+        clearTimeout(timeout); 
       }
     };
 
@@ -63,7 +66,7 @@ const SearchComponent = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [query]); // Runs when query changes
+  }, [query]); 
 
   return (
     <div className="search-container">
@@ -75,6 +78,7 @@ const SearchComponent = () => {
         onChange={(e) => setQuery(e.target.value)} // Update state on input change
         placeholder="Enter username"
       />
+      {/* Hint: Map over results and display usernames and avatar */}
       <ul className="results-list">
         {results.length > 0 ? (
           results.map((user) => (
