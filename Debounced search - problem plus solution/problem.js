@@ -24,10 +24,10 @@ const SearchComponent = () => {
     <div>
       <input
         placeholder="Search users..."
-        onChange={(e) => setQuery(e.target.value)} // Hint: Update state on input change
+        onChange={(e) => setQuery()} // Hint: Update state on input change
       />
       <ul>
-        {/* Hint: Map over results and display usernames */}
+        {/* Hint: Map over results and display usernames and avatar */}
       </ul>
 
       <style>
