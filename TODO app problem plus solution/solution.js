@@ -1,3 +1,11 @@
+// To-Do App Problem:
+// 1. Implement a to-do list where users can add tasks, delete them, and toggle their completion status (strike-through).
+// 2. Tasks should be saved to localStorage so they persist after page reloads.
+// 3. Design a clean UI with an input field for adding tasks and a "Delete" button for removing them.
+// 4. When a task is clicked, toggle its completion (add/remove line-through style).
+// 5. Use React's useState and useEffect hooks to manage state and localStorage interactions.
+
+
 import React, { useState, useEffect } from "react";
 
 const TodoApp = () => {
