@@ -10,14 +10,15 @@
 import { useState, useEffect } from "react";
 
 const SearchComponent = () => {
-  const [query, setQuery] = useState(""); // Store input value
-  const [results, setResults] = useState([]); // Store API results
+   // Store input value
+   // Store API results
+   // Store error message
 
   useEffect(() => {
     // Hint: Set a timeout to delay the API request
     // Hint: Cancel previous timeout using clearTimeout
     // Hint: Fetch data from API and update state
-  }, [query]); // Runs when query changes
+  }, [query]); 
 
   return (
     <div>
