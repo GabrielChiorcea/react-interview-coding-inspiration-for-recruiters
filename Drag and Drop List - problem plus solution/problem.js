@@ -43,6 +43,13 @@ export default function DragDropList() {
         - Each item should have the `draggable` attribute.
         - Attach the drag & drop event handlers to each item.
         - Apply styling to make it visually clear that items can be reordered.
+        style={{
+          padding: "10px",
+          margin: "5px",
+          border: "1px solid #ccc",
+          cursor: "grab",
+          backgroundColor: "#f9f9f9",
+        }}
       */}
     </ul>
   );
