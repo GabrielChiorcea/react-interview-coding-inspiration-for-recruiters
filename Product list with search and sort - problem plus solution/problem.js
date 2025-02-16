@@ -46,6 +46,96 @@ const ProductList = () => {
       {/* Hint: Display error message if there's an issue with the API */}
       {/* Hint: Display products in a list with their name, category, and price */}
     </div>
+
+//  <style>      
+// {`
+// /* General layout */
+// body {
+//   font-family: 'Arial', sans-serif;
+//   background-color: #f7f7f7;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// /* Container */
+// div {
+//   max-width: 900px;
+//   margin: 0 auto;
+//   padding: 20px;
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   overflow: hidden;
+// }
+
+// /* Heading */
+// h2 {
+//   text-align: center;
+//   color: #333;
+//   font-size: 2em;
+//   margin-bottom: 20px;
+// }
+
+// /* Search input */
+// input {
+//   width: 100%;
+//   padding: 10px;
+//   margin-bottom: 20px;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+//   font-size: 1em;
+// }
+
+// /* Button */
+// button {
+//   padding: 10px 15px;
+//   background-color: #4CAF50;
+//   color: white;
+//   border: none;
+//   border-radius: 4px;
+//   font-size: 1em;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   margin-bottom: 20px;
+//   display: block;
+//   width: 100%;
+// }
+
+// button:hover {
+//   background-color: #45a049;
+// }
+
+// /* Product List */
+// ul {
+//   list-style-type: none;
+//   padding: 0;
+// }
+
+// li {
+//   border-bottom: 1px solid #eee;
+//   padding: 15px 0;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// li h3 {
+//   font-size: 1.2em;
+//   color: #333;
+// }
+
+// li p {
+//   margin: 5px 0;
+//   color: #555;
+// }
+
+// /* Error message */
+// p {
+//   color: red;
+//   font-size: 1em;
+//   text-align: center;
+// }
+// `}
+// </style>
   );
 };
 
